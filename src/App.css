@@ -1,38 +1,168 @@
+/*main app container*/
 .App {
-  text-align: center;
+  text-align: center; /*centres text*/
+  min-height: 100vh; /*makes the app at least the full height of the screen*/
+  display: flex; /*makes it flexible*/
+  flex-direction: column; /*stacks the header, content and footer vertically*/
+  background-color: #919BBA; /*background colour*/
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*nav bar*/
+.navbar {
+  display: flex; 
+  flex-wrap: wrap; /*prevents the bar from overflowing on small screens*/
+  align-items: center; /*vertically aligns items to centre*/
+  justify-content: space-between; /*pushes the logo left and the links right*/
+  gap: 0.5rem 1rem; /*row and column spacing when items wrap*/
+  padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 3vw, 1.4rem); /*padding that scales with the screen size*/
+  background: #627099;
+  position: sticky; /*keeps the nav bar in view when scrolling*/
+  top: 0; /*sticks the nav bar to the top of the screen*/
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+/*logo and site name on nav bar*/
+.navbar-brand {
+  display: flex; /*puts the logo and name side by side*/
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: clamp(0.5rem, 1.5vw, 0.8rem);
+  color: #000000;
+  text-decoration: none; /*removes the default link underline*/
+  font-weight: bold; /*bold text*/
+  font-size: clamp(1.5rem, 3vw, 2rem); /*font size scales*/
 }
 
-.App-link {
-  color: #61dafb;
+/*logo image*/
+.navbar-brand img {
+  height: clamp(32px, 5vw, 45px); /*logo height scales between 32px and 45px*/
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/*links on right in nav bar*/
+.navbar-links {
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: clamp(0.75rem, 2vw, 1.5rem); 
+  font-size: clamp(1rem, 2vw, 1.2rem); 
+}
+
+/*links in nav and footer*/
+.navbar-links a, .footer-links a {
+  color: #000000;
+  text-decoration: none; /*removes link underline*/
+}
+
+/*hover links*/
+.navbar-links a:hover,.footer-links a:hover {
+  color: #bcc5e6; /*hover colour*/
+  text-decoration: underline; /*adds an underline*/
+}
+
+/*main page content between nav and footer*/
+.content {
+  flex: 1; /*takes leftover space*/
+   padding: clamp(0.1rem, 1vw, 0.75rem) clamp(0.1rem, 1vw, 0.75rem) 2rem;
+  text-align: center; 
+}
+
+/*main page heading*/
+.content h1 {
+  margin: 3rem;
+  margin-bottom: 0.8rem; /*space between heading and the offline detection box*/
+  font-size: 2.4rem;
+}
+
+/*url input*/
+.content input {
+  width: 100%; /*fills the width of the screen on small devices*/
+  max-width: 500px; /*stops the box getting too wide on large screens*/
+  padding: 0.8rem 1.2rem;
+  box-sizing: border-box; /*includes padding so it doesn't overflow*/
+  border: none;
+  border-radius: 999px; /*rounding the sides*/
+  background: #a1a9c4;
+  font-size: 1rem;
+  outline: none; 
+}
+
+/*placeholder text in url box*/
+.content input::placeholder {
+  color: #6F7BA1;
+  font-style: italic; /*italics*/
+}
+
+/*input when clicked*/
+.content input:focus {
+  background: #aab3cf;
+}
+
+/*footer*/
+.footer {
+  display: flex; /*puts the links and copyright on one row*/
+  align-items: center; /*vertically centres everything in the footer*/
+  justify-content: space-between; /*links on the left, copyright on the right*/
+  flex-wrap: wrap; 
+  gap: 0.25rem 1rem; /*space between them when they wrap*/
+  padding: 1rem clamp(1rem, 3vw, 1.4rem); /*space above and below, sides match the nav bar*/
+  background: #627099;
+  color: #000000;
+}
+
+/*links inside footer*/
+.footer-links {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  margin: 0; /*removes the extra space so the links sit in the middle*/
+  padding: 0; /*the footer's own padding now handles the left edge*/
+}
+/*copyright text in the footer*/
+.footer p {
+  margin: 0.1rem 0 0.3rem; /*removes the spacfe*/
+}
+
+/*offline detection box*/
+.offline-detection {
+  display: flex; 
+  align-items: center; 
+  gap: 0.4rem;
+  width: fit-content; /*shrinks to fit its contents*/
+  margin: 0.5rem auto; /*centres and adds space above and below*/
+  padding: 0.3rem 1rem; /*space inside around the icon and text*/
+  background: #7a85a9; 
+  border-radius: 999px; 
+}
+
+/*offline detection icon*/
+.offline-detection img {
+  height: clamp(20px, 2.5vw, 22px); 
+}
+
+/*heading inside offline detection box*/
+.offline-detection h2 {
+  margin: 0; /*removes the default margin so it lines up with the icon*/
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  font-weight: normal; /*removes the default bold heading weight*/
+}
+
+/*search box*/
+.search-box {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: 1rem; 
+  margin-top: 4rem; /*space between offline detection box and the search box*/
+}
+
+/*search button*/
+.search-box button {
+  padding: 0.6rem 2rem; 
+  font-size: 1.1rem; 
+  border: 2px solid #67759e; 
+  border-radius: 999px; 
+  cursor: pointer; /*shows cursor on hover*/
+  background: #6e7da9; 
+}
+
+/*hover effect for search button*/
+.search-box button:hover {
+  border-color: #525f8a; 
 }
