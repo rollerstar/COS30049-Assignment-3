@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, NavLink } from "react-router-dom";
+//importing components and css//
+import "./App.css";
+import Home from "./pages/Home";
+import Features from "./pages/Features";
+import HowItWorks from "./pages/HowitWorks";
+import About from "./pages/About";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="navbar">
+        <NavLink to="/" className="navbar-brand">
+          <img src="/images/PhishIcon.svg" alt="" />
+          <span>Phisher</span>  
+        </NavLink>
+        <nav className="navbar-links">
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/HowitWorks">How it Works</NavLink>
+        </nav>
       </header>
+
+      <main className="content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Features" element={<Features />} />
+          <Route path="/HowitWorks" element={<HowItWorks />} />
+        </Routes>
+      </main>
+
+      <footer className="footer">
+        <nav className="footer-links">
+          <NavLink to="/About">About</NavLink>
+          <NavLink to="/Features">Features</NavLink>
+          <NavLink to="/HowitWorks">How it Works</NavLink>
+        </nav>
+        <p>© 2026 Phisher</p>
+      </footer>
     </div>
   );
 }
