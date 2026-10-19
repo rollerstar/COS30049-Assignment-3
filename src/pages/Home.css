@@ -1,0 +1,93 @@
+/*main page heading*/                                                                       
+.content h1 {                                                                               
+  margin: 3rem;                                                                             
+  margin-bottom: 0.8rem; /*space between heading and the offline detection box*/            
+  font-size: 2.4rem;                                                                        
+}                                                                                           
+                                                                                            
+/*url input*/                                                                               
+.content input {                                                                            
+  width: 100%; /*fills the width of the screen on small devices*/                           
+  max-width: 600px; /*stops the box getting too wide on large screens*/                     
+  padding: 0.8rem 1.2rem;                                                                   
+  box-sizing: border-box; /*includes padding so it doesn't overflow*/                       
+  border: none;                                                                             
+  border-radius: 999px; /*rounding the sides*/                                              
+  background: #a1a9c4;                                                                      
+  font-size: 1rem;                                                                          
+  outline: none;                                                                            
+}
+
+/*error text*/
+.error-message {
+  color: #aa150d;
+  font-weight: 500; /*red + big to make text stand out*/
+}
+                                                                                            
+/*placeholder text in url box*/                                                             
+.content input::placeholder {                                                               
+  color: #6F7BA1;                                                                           
+  font-style: italic; /*italics*/                                                           
+}                                                                                           
+                                                                                            
+/*input when clicked*/                                                                      
+.content input:focus {                                                                      
+  background: #aab3cf;                                                                      
+}
+                                                                                         
+/*offline detection box*/                                                                
+.offline-detection {                                                                     
+  display: flex;                                                                         
+  align-items: center;                                                                   
+  gap: 0.4rem;                                                                           
+  width: fit-content; /*shrinks to fit its contents*/                                    
+  margin: 0.5rem auto; /*centres and adds space above and below*/                        
+  padding: 0.3rem 1rem; /*space inside around the icon and text*/                        
+  background: #7a85a9;                                                                   
+  border-radius: 999px;                                                                  
+}                                                                                        
+                                                                                         
+/*offline detection icon*/                                                               
+.offline-detection img {                                                                 
+  height: clamp(20px, 2.5vw, 22px);                                                      
+}                                                                                        
+                                                                                         
+/*heading inside offline detection box*/                                                 
+.offline-detection h2 {                                                                  
+  margin: 0; /*removes the default margin so it lines up with the icon*/                 
+  font-size: clamp(1rem, 2vw, 1.1rem);                                                   
+  font-weight: normal; /*removes the default bold heading weight*/                       
+}                                                                                        
+                                                                                                                                                                                                                                                                                                                                                        
+/*search box*/                                                                           
+.search-box {                                                                            
+  display: flex;                                                                         
+  flex-direction: column;                                                                
+  align-items: center;                                                                   
+  gap: 1rem;                                                                             
+  margin-top: 4rem; /*space between offline detection box and the search box*/           
+}                                                                                        
+                                                                                         
+/*search button*/                                                                        
+.search-box button {
+  display: inline-flex; /*icon and text sit in a row*/                                                                    
+  padding: 0.6rem 2rem;
+  align-items: center;                                                                 
+  font-size: 1.1rem;
+  gap: 0.5rem;                                                                      
+  border: 2px solid #67759e;                                                             
+  border-radius: 999px;                                                                  
+  cursor: pointer; /*shows cursor on hover*/                                             
+  background: #6e7da9;                                                                   
+}
+
+/*search icon*/
+.search-box button img {
+  width: 1.1em; 
+  height: 1.1em;
+}                                                                                     
+                                                                                         
+/*hover effect for search button*/                                                       
+.search-box button:hover {                                                               
+  border-color: #525f8a;                                                                 
+}         
