@@ -6,7 +6,25 @@ function Home() {
   const [result, setResult] = useState(null);
 //runs when search button is clicked, sends to backend
   const handleCheck = async () => {
-    // backend here <-----------------!!!! 
+    e.preventDefault();
+    SetError('');
+    setResult(null);
+    setLoading(true);
+
+    try {
+      // Call backend to get results
+      const repsonse = await axios.get(`http://localhost:8000/check/${url}`);
+      setResult(response.data.result);
+
+      const finalScore = [0]
+      const suspiciousLength = [0]
+      const suspiciousKeywords = [null]
+      const ipAddress = [null]
+      const atUrl = [false]
+      const likealikeCharacters = [0]
+      const suspiciousTLD = [null]
+
+    }
   };
 
   return (
@@ -22,9 +40,9 @@ function Home() {
         <input
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          placeholder="Enter URL..."
-        />
+          placeholder="Enter URL..." />
         <button onClick={handleCheck}>Search</button>
+                <text>AI can make mistakes. Check with other sources.</text>
       </div>
       {result && <p>Result: {result}</p>}
     </>
