@@ -11,6 +11,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+## Run backend
+`uvicorn main:app --reload --port 8000`
+
 ### `npm start`
 
 Runs the app in the development mode.\
