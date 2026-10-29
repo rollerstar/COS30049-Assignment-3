@@ -12,7 +12,6 @@ import pandas as pd
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-
 from features import extract_features_df, FEATURE_COLUMNS
 
 MODEL_PATH = Path(__file__).resolve().parent / "model.joblib"

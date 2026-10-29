@@ -15,7 +15,7 @@ function App() {
         </NavLink>
         <nav className="navbar-links">
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/HowitWorks">How It Works</NavLink>
+          <NavLink to="/HowItWorks">How It Works</NavLink>
         </nav>
       </header>
 
@@ -23,7 +23,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<About />} />
-          <Route path="/Features" element={<Features />} />
           <Route path="/HowItWorks" element={<HowItWorks />} />
         </Routes>
       </main>
@@ -31,7 +30,6 @@ function App() {
       <footer className="footer">
         <nav className="footer-links">
           <NavLink to="/About">About</NavLink>
-          <NavLink to="/Features">Features</NavLink>
           <NavLink to="/HowItWorks">How It Works</NavLink>
         </nav>
         <p>© 2026 Phisher</p>

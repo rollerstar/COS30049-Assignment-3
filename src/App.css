@@ -370,3 +370,38 @@ results-panel .results-panels{
 @media (max-width: 700px) {
   .results-panels { flex-direction: column; }
 }
+
+/*how it works page*/
+.how-intro, .how-heading, .how-note h3 { color: #fff; text-align: center; }
+.how-note h3 { text-align: left; margin: 0 0 0.25rem; font-size: 1.1rem; }
+.how-note { margin-bottom: 1.25rem; }
+.how-note p { color: #d5dbea; margin: 0; line-height: 1.4; }
+
+/*example buttons (dangerous, suspicious, safe)*/
+.how-picker { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin: 1.5rem 0; }
+.how-pick { padding: 0.6rem 1.2rem; border-radius: 999px; border: 2px solid transparent; background: #1c2a45; color: #fff; font-weight: bold; cursor: pointer; }
+.how-pick:hover { filter: brightness(1.2); }
+.how-pick.active { color: #000; }
+.how-pick.danger.active  { background: #e63946; border-color: #e63946; }
+.how-pick.warning.active { background: #d97706; border-color: #d97706; }
+.how-pick.safe.active    { background: #16a34a; border-color: #16a34a; }
+
+/*score panel and explanation side by side*/ 
+.how-row { display: flex; gap: 3rem; align-items: flex-start; justify-content: center; flex-wrap: wrap; max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; box-sizing: border-box; }
+.how-row .score-panel { flex: 1 1 300px; }
+.how-explain { flex: 1 1 300px; max-width: 420px; text-align: left; }
+
+/*details list*/
+.how-list { list-style: none; max-width: 640px; margin: 1rem auto; padding: 0 1.5rem; }
+.how-list li { padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.25); text-align: left; }
+.how-list-top { display: flex; justify-content: space-between; gap: 1rem; color: #fff; font-weight: 600; font-size: 1.1rem; }
+.how-list-top .value-good { color: #16a34a; }
+.how-list-top .value-bad  { color: #e63946; }
+.how-list-text { margin: 0.4rem 0 0; color: #b8c0d4; font-size: 0.95rem; line-height: 1.4; }
+
+/*about page*/
+.about-intro { color: #fff; text-align: center; max-width: 600px; margin: 1rem auto; } 
+.about-list { display: grid; gap: 1rem; max-width: 640px; margin: 1.5rem auto; padding: 0 1.5rem; } 
+.about-card { background: #14213d; border-radius: 12px; padding: 1rem 1.25rem; text-align: left; } 
+.about-card h3 { color: #fff; margin: 0 0 0.25rem; font-size: 1.1rem; } 
+.about-card p { color: #d5dbea; margin: 0; line-height: 1.4; } 
