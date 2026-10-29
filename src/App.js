@@ -29,6 +29,20 @@ function App() {
           <Route path="/About" element={<About />} />
           <Route path="/Features" element={<Features />} />
           <Route path="/HowItWorks" element={<HowItWorks />} />
+          <Route path="/HowitWorks" element={<HowItWorks />} />
+          <Route path="/results" element={<Results />} />
+
+          {/*for any address that is invalid send to error screen*/}
+          <Route
+            path="*"
+            element={
+              <div className="error-screen">
+                <h1>Error: page not found</h1>
+                <p>This page doesn't exist.</p>
+                <NavLink to="/" className="home-btn">Back to Home</NavLink>
+              </div>
+            }
+          />
         </Routes>
       </main>
 
