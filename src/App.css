@@ -370,3 +370,94 @@ results-panel .results-panels{
 @media (max-width: 700px) {
   .results-panels { flex-direction: column; }
 }
+/*main app container*/                                                                                         
+.App {                                                                                                         
+  text-align: center; /*centres text*/                                                                         
+  min-height: 100vh; /*makes the app at least the full height of the screen*/                                  
+  display: flex; /*makes it flexible*/                                                                         
+  flex-direction: column; /*stacks the header, content and footer vertically*/                                 
+  background-color: #919BBA; /*background colour*/                                                             
+}                                                                                                                                                                                                                             
+                                                                                                               
+/*nav bar*/                                                                                                    
+.navbar {                                                                                                      
+  display: flex;                                                                                               
+  flex-wrap: wrap; /*prevents the bar from overflowing on small screens*/                                      
+  align-items: center; /*vertically aligns items to centre*/                                                   
+  justify-content: space-between; /*pushes the logo left and the links right*/                                 
+  gap: 0.5rem 1rem; /*row and column spacing when items wrap*/                                                 
+  padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 3vw, 1.4rem); /*padding that scales with the screen size*/
+  background: #627099;
+  z-index: 100; /*keeps nav above everything*/                                                                                         
+  position: sticky; /*keeps the nav bar in view when scrolling*/                                               
+  top: 0; /*sticks the nav bar to the top of the screen*/                                                      
+}                                                                                                                                                                                                                             
+                                                                                                               
+/*logo and site name on nav bar*/                                                                              
+.navbar-brand {                                                                                                
+  display: flex; /*puts the logo and name side by side*/                                                       
+  align-items: center;                                                                                         
+  gap: clamp(0.5rem, 1.5vw, 0.8rem);                                                                           
+  color: #000000;                                                                                              
+  text-decoration: none; /*removes the default link underline*/                                                
+  font-weight: bold; /*bold text*/                                                                             
+  font-size: clamp(1.5rem, 3vw, 2rem); /*font size scales*/                                                    
+}                                                                                                                                                                                                                            
+                                                                                                               
+/*logo image*/                                                                                                 
+.navbar-brand img {                                                                                            
+  height: clamp(32px, 5vw, 45px); /*logo height scales between 32px and 45px*/                                 
+}                                                                                                                                                                                                                             
+                                                                                                               
+/*links on right in nav bar*/                                                                                  
+.navbar-links {                                                                                                
+  display: flex;                                                                                               
+  flex-wrap: wrap;                                                                                             
+  gap: clamp(0.75rem, 2vw, 1.5rem);                                                                            
+  font-size: clamp(1rem, 2vw, 1.2rem);                                                                         
+}                                                                                                                                                                                                                             
+                                                                                                               
+/*links in nav and footer*/                                                                                    
+.navbar-links a, .footer-links a {                                                                             
+  color: #000000;                                                                                              
+  text-decoration: none; /*removes link underline*/                                                            
+}                                                                                                                                                                                                                            
+                                                                                                               
+/*hover links*/                                                                                                
+.navbar-links a:hover,.footer-links a:hover {                                                                  
+  color: #bcc5e6; /*hover colour*/                                                                             
+  text-decoration: underline; /*adds an underline*/                                                            
+}                                                                                                                                                                                                                             
+                                                                                                               
+/*main page content between nav and footer*/                                                                   
+.content {                                                                                                     
+  flex: 1; /*takes leftover space*/                                                                            
+   padding: clamp(0.1rem, 1vw, 0.75rem) clamp(0.1rem, 1vw, 0.75rem) 2rem;                                      
+  text-align: center;                                                                                          
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+                                                                                                               
+/*footer*/                                                                                                     
+.footer {                                                                                                      
+  display: flex; /*puts the links and copyright on one row*/                                                   
+  align-items: center; /*vertically centres everything in the footer*/                                         
+  justify-content: space-between; /*links on the left, copyright on the right*/                                
+  flex-wrap: wrap;                                                                                             
+  gap: 0.25rem 1rem; /*space between them when they wrap*/                                                     
+  padding: 1rem clamp(1rem, 3vw, 1.4rem); /*space above and below, sides match the nav bar*/                   
+  background: #627099;                                                                                         
+  color: #000000;                                                                                              
+}                                                                                                                                                                                                                             
+                                                                                                               
+/*links inside footer*/                                                                                        
+.footer-links {                                                                                                
+  display: flex;                                                                                               
+  flex-wrap: wrap;                                                                                             
+  gap: clamp(0.75rem, 2vw, 1.5rem);                                                                            
+  margin: 0; /*removes the extra space so the links sit in the middle*/                                        
+  padding: 0; /*the footer's own padding now handles the left edge*/                                           
+}    
+
+/*copyright text in the footer*/                                                                               
+.footer p {                                                                                                    
+  margin: 0.1rem 0 0.3rem; /*removes the spacfe*/                                                              
+} 
