@@ -2,7 +2,6 @@ import { Routes, Route, NavLink } from "react-router-dom";
 //importing components and css//
 import "./App.css";
 import Home from "./pages/Home";
-import Features from "./pages/Features";
 import HowItWorks from "./pages/HowItWorks";
 import About from "./pages/About";
 
