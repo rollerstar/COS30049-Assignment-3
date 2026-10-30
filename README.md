@@ -16,23 +16,27 @@ In the project directory, you can run:
 
 ## Threat model
 
-**Who would want to attack it?** A phisher who wants a malicious link they're
-sending out to be scored "legitimate," so a victim or an automated filter
-trusts it. Also, someone probing the API directly (not through the UI) to
-see how the classifier decides, to copy its behaviour, or to disrupt it for
-other users.
+This app is a phishing-URL classifier: a caller submits a URL and gets back
+a legitimacy score. There are no logins, no stored files, and no outbound
+requests from the server itself - the whole attack surface is one API call.
 
-**What are they trying to achieve?** Get a phishing URL misclassified as
-legitimate (evade detection); learn how the model decides, or copy its
-behaviour (model extraction); or make the service slow or unavailable for
-everyone else (denial of service).
+**Attacker profile.** Two realistic attackers: a phisher who wants their
+malicious link to be scored "legitimate," so a victim or an automated
+filter trusts it; and someone probing the API directly (not through the
+UI) to see how the classifier decides, copy its behaviour, or disrupt it
+for other users.
 
-**What can they actually do to it?** Send any URL string to the one
-endpoint, `POST /check` - that is the entire attack surface. The app never
-fetches pages, never logs users in, never stores files, never runs a shell
+**Attacker goals.** Evade detection - get a phishing URL misclassified as
+legitimate. Model extraction - learn how the model decides well enough to
+copy or defeat it. Denial of service - make the endpoint slow or
+unavailable for everyone else.
+
+**Attack surface and which threats apply.** The entire surface is
+`POST /check`, which takes a URL string. The app never fetches the pages
+it's given, never logs users in, never stores files, never runs a shell
 command, and never queries a database, so **SQL injection, SSRF, broken
-access control and unsafe file upload do not apply** to this design. The
-realistic risks are request *volume* (nothing stopped flooding the
+access control and unsafe file upload do not apply** to this design. What
+*is* realistic is request *volume* (nothing stops someone flooding the
 endpoint) and server configuration/dependency hygiene - which is why those
 are the two defences built below.
 
