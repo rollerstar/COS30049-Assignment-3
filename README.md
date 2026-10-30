@@ -14,6 +14,76 @@ In the project directory, you can run:
 ## Run backend
 `uvicorn main:app --reload --port 8000`
 
+## Threat model
+
+**Who would want to attack it?** A phisher who wants a malicious link they're
+sending out to be scored "legitimate," so a victim or an automated filter
+trusts it. Also, someone probing the API directly (not through the UI) to
+see how the classifier decides, to copy its behaviour, or to disrupt it for
+other users.
+
+**What are they trying to achieve?** Get a phishing URL misclassified as
+legitimate (evade detection); learn how the model decides, or copy its
+behaviour (model extraction); or make the service slow or unavailable for
+everyone else (denial of service).
+
+**What can they actually do to it?** Send any URL string to the one
+endpoint, `POST /check` - that is the entire attack surface. The app never
+fetches pages, never logs users in, never stores files, never runs a shell
+command, and never queries a database, so **SQL injection, SSRF, broken
+access control and unsafe file upload do not apply** to this design. The
+realistic risks are request *volume* (nothing stopped flooding the
+endpoint) and server configuration/dependency hygiene - which is why those
+are the two defences built below.
+
+## Security defences (section 2.7)
+
+### 1. Denial of Service (Advanced)
+`POST /check` allows at most `MAX_CONCURRENT_PREDICTIONS = 8` predictions to
+run at the same time (`threading.Semaphore(8)`, non-blocking `acquire`).
+Past that limit, a new request gets an immediate `503` instead of queueing,
+so flooding the endpoint can't make it hang or starve other users - it can
+only be turned away cleanly. Measured result: firing 40 requests at once,
+8 succeeded (200) and 32 were rejected (503) with 0 errors, and a health
+check immediately after returned in ~0.01s, showing the server was never
+degraded. With the limit removed, all 40 succeed but each is measurably
+slower, since they genuinely contend for the same worker threads instead of
+the excess being turned away instantly. Cost: under a genuine burst of
+legitimate traffic, a few users could receive a `503` and need to retry -
+the trade-off for guaranteed responsiveness under attack.
+
+### 2. Misconfiguration & vulnerable dependencies (Intermediate)
+A response middleware sets `X-Content-Type-Options: nosniff`,
+`X-Frame-Options: DENY` and `Referrer-Policy: no-referrer` on every
+response, and strips the `Server` header - none of these are on by default
+in FastAPI. `pip-audit` on the backend: no known vulnerabilities found.
+`npm audit` on the frontend: fixed down to 34 remaining findings, all
+inside `react-scripts`' build tooling (`webpack-dev-server`, a Terser
+plugin, `jsonpath`/`underscore` via `bfj`). These only run on a developer's
+machine during `npm start`/`npm build` and never ship in the bundle a
+user's browser downloads; fixing them requires `npm audit fix --force`,
+which downgrades `react-scripts` to a broken version and breaks the build,
+so they were assessed and consciously accepted rather than fixed by
+breaking the app. Cost: negligible for the headers; the accepted frontend
+findings are the one real trade-off, weighed against breaking the build.
+
+*(Not used: SSRF, command injection, SQL injection, unsafe file upload and
+broken access control do not apply to this design - no outbound requests,
+no shell commands, no database, no file uploads, no user accounts.)*
+
+## What doesn't work yet / next steps
+- The model's confidence is inconsistent - it flags `google.com` and
+  `en.wikipedia.org` as phishing with 78-80% confidence, while an actual
+  phishing-shaped URL barely clears 50%. This is a model-quality issue
+  inherited from Assignment 2's limited feature set, not a backend bug;
+  accuracy isn't marked in this assignment, but it's worth stating honestly.
+- No OWASP ZAP baseline scan was run against the running app - the next
+  security check we'd add.
+- No global exception handler yet for a genuinely unexpected backend
+  failure (e.g. the model call itself failing) - invalid *input* already
+  returns clean, consistent errors via Pydantic validation.
+
+
 ### `npm start`
 
 Runs the app in the development mode.\
