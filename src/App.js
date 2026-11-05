@@ -4,6 +4,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import HowItWorks from "./pages/HowItWorks";
 import About from "./pages/About";
+import NotFound from "./NotFound";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <main className="content">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound/>} />
           <Route path="/About" element={<About />} />
           <Route path="/HowItWorks" element={<HowItWorks />} />
         </Routes>

@@ -405,3 +405,19 @@ results-panel .results-panels{
 .about-card { background: #14213d; border-radius: 12px; padding: 1rem 1.25rem; text-align: left; } 
 .about-card h3 { color: #fff; margin: 0 0 0.25rem; font-size: 1.1rem; } 
 .about-card p { color: #d5dbea; margin: 0; line-height: 1.4; } 
+
+/*Link for 404 Error page*/
+.not-found {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+.not-found h1 {
+  font-size: 4rem;
+  margin: 0;
+}
+.not-found a {
+  color: #ff4e5d;
+}
+.not-found a:hover {
+  color: #fff;
+}

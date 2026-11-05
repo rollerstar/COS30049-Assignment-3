@@ -1,7 +1,12 @@
 # COS30049-Assignment-3
 
 ### Requirements
-- `Node 24.21.0 LTS`
+__Node 24.21.0 LTS__
+To run the front-end web interface you will need Node.JS
+__Extra packages: joblib, fastapi, uvicorn, pandas scikit-learn__
+To make sure you have the extra packages this application may use `pip install joblib fastapi uvicorn pandas scikit-learn`
+__Concurrently__ 
+To run front and back-end at the same time with conmmand `npm start`, please install using: `npm install --save-dev concurrently`
 
 # Running the program
 1. Open a terminal in the project directory
