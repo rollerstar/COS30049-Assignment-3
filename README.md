@@ -8,6 +8,8 @@
 2. Submit command `npm start`
 3. Open a browser to [http://localhost:3000/](http://localhost:3000/)
 
+You can eview `./docs/` on [http://localhost:8000/docs](http://localhost:8000/docs)
+
 ## Threat model
 This app is a phishing-URL classifier: a caller submits a URL and gets back
 a legitimacy score. There are no logins, no stored files, and no outbound
