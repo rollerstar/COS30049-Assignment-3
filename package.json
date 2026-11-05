@@ -15,7 +15,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently -n api,web -c yellow,cyan \"npm run start:api\" \"npm run start:web\"",
+    "start:api": "cd src/backend && python -m uvicorn main:app --reload --port 8000",
+    "start:web": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -41,5 +43,8 @@
   "allowScripts": {
     "core-js@3.50.0": true,
     "core-js-pure@3.50.0": true
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6"
   }
 }

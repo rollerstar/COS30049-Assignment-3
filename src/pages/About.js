@@ -1,4 +1,3 @@
-import { useState } from "react";
 const FACTS = [
   { title: "What it does", text: "Phisher checks a URL and gives it a trust score out of 100. The lower the score, the more likely the link is phishing." },
   { title: "How it decides", text: "The URL is broken down into simple features, like its length and the number of dots, hyphens and digits. A machine learning model then turns those features into a phishing probability." },

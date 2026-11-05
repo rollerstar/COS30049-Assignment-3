@@ -3,19 +3,12 @@
 ### Requirements
 - `Node 24.21.0 LTS`
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-## Run backend
-`uvicorn main:app --reload --port 8000`
+# Running the program
+1. Open a terminal in the project directory
+2. Submit command `npm start`
+3. Open a browser to [http://localhost:3000/](http://localhost:3000/)
 
 ## Threat model
-
 This app is a phishing-URL classifier: a caller submits a URL and gets back
 a legitimacy score. There are no logins, no stored files, and no outbound
 requests from the server itself - the whole attack surface is one API call.
